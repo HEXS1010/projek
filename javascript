@@ -106,3 +106,49 @@ document.addEventListener("DOMContentLoaded",
         setTimeout(type, newTextDelay + 250)
     }
 )
+
+
+// browser animasi 
+const text = `
+<span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="val">"en"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="val">"UTF-8"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="val">"viewport"</span> <span class="attr">content</span>=<span class="val">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;title&gt;</span><span class="text">Projek saya</span><span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;h1&gt;</span><span class="text">Hello World 🌍</span><span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;p&gt;</span><span class="text">Ini adalah projek pertama saya!</span><span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+`;
+
+
+let index = 0;
+const speed = 30;
+const typingEl = document.getElementById("typing");
+typingEl.style.marginTop = "0px";
+let started = false;
+
+function typeWriter() {
+  if (index <= text.length) {
+    typingEl.innerHTML = text.substring(0, index); 
+    index++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+
+
+const browserEl = document.querySelector(".browser");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !started) {
+      started = true;
+      typeWriter();
+    }
+  });
+}, { threshold: 0.4 });
+
+observer.observe(browserEl);
