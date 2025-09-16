@@ -36,90 +36,48 @@ html, body {
     background-color: var(--primary);
     padding: 1rem 2rem;
     font-weight: 500;
-    z-index: 100;
+    z-index: 500;
     border-bottom: 1px solid var(--color-text);
 }
 
-/* .navbar-toggle {
-    position: absolute;
-    right: 1rem;
+.burger div {
+  width: 25px;
+  height: 2px;
+  background-color: #ffffff;
+  margin: 7px;
+  transition: all 0.3s;
+  z-index: 99;
+}
+
+.burger {
+  display: none;
+  z-index: 500;
+  position: fixed;
+  top: 33px;
+  right: 35px;
+}
+
+.burger {
     display: block;
     cursor: pointer;
-    height: 4rem;
-    width: 4rem;
-    top: 2.5rem;
-    color: white;
-} */
+  }
 
-.navbar-toggle {
-    position: absolute;
-    right: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    cursor: pointer;
-    height: 1.5rem;
-    width: 2rem;
-    top: 2.5rem;
-}
+  .toggle-burger .line-1 {
+    transform: rotate(-45deg) translate(-5px, 7px);
+  }
 
-.navbar-toggle span, 
-.navbar-toggle::before, 
-.navbar-toggle::after {
-    content: '';
-    display: block;
-    position: relative;
-    height: 2px;
-    /* width: 1rem; */
-    width: 100%;
-    border-radius: 2px;
-    background-color: white;
-    transform-origin: left;
-    transition: all 200ms ease;
-}
-
-.navbar-toggle::before {
-    position: absolute;
-    top: 0;
-}
-
-.navbar-toggle span {
-    position: relative;
-}
-
-.navbar-toggle::after {
-    position: absolute;
-    bottom: 0;
-}
-
-.navbar-toggle.navbar-expand span {
+  .toggle-burger .line-2 {
     opacity: 0;
+  }
 
+  .toggle-burger .line-3 {
+    transform: rotate(45deg) translate(-5px, -7px);
+  }
+
+
+.burger {
+  display: block;
 }
-
-.navbar-toggle.navbar-expand::before {
-    transform: rotate(45deg);
-    top: 50%;
-}
-
-.navbar-toggle.navbar-expand::after {
-    transform: rotate(-45deg);
-    bottom: 50%;
-}
-
-.navbar-toggle::after {
-    top: 100%;
-}
-
-/* .navbar-toggle.navbar-expand::before {
-    transform: rotate(45deg);
-    width: 1.45rem;
-}
-
-.navbar-toggle.navbar-expand::after {
-    transform: rotate(-45deg);
-    width: 1.45rem;
-}  */
 
 
 .navbar a {
@@ -252,6 +210,12 @@ html, body {
   flex-direction: column;
   gap: 15px;
   overflow-y: auto;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+
+.sidebar.active {
+  transform: translateX(0);
 }
 
 .sidebar .menu-item {
@@ -264,16 +228,19 @@ html, body {
   font-weight: 500;
   text-decoration: none;
   transition: background-color 0.3s ease, color 0.3s ease;
-  border-radius: 8px;
 }
 
 .sidebar .menu-item:hover {
-  /* background-color: #1c293f;
-  color: #60a5fa; */
-
   background-color: #1c293f;
   color: var(--secondery);
 }
+
+
+.sidebar .menu-item.active {
+  background-color: #1c293f;
+  color: var(--secondery);
+}
+
 
 
 .sidebar .menu-item .i {
@@ -300,6 +267,47 @@ html, body {
 .sidebar::-webkit-scrollbar-track {
   background: transparent;
 }
+
+
+/* sidebar toggle */
+.sidebar-toggle-btn {
+  position: fixed;
+  top: 118px; 
+  left: 0;
+  transform: translateX(0);
+  width: 30px;
+  height: 30px;
+  border-radius: 0%;
+  /* background: transparent; */
+  background: var(--primary);
+  color: var(--secondery);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: left 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar-toggle-btn i {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+
+.sidebar.active ~ .sidebar-toggle-btn {
+  left: 237px; 
+}
+
+
+@media (min-width: 601px) {
+  .sidebar-toggle-btn {
+    display: none;
+  }
+}
+
+
 /* sidebar akhir */
 
 
@@ -310,21 +318,25 @@ html, body {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  margin-left: 240px;   
-  margin-top: 70px;     
+  margin-left: 0;
+  margin-top: 20px;     
   padding: 20px;
 }
 
 .content {
   flex: 3;
-  min-width: 500px;
+  min-width: 0;
+  width: 100%; 
+  /* min-width: 500px; */
   /* margin-left: 220px; */
   /* margin-top: 70px;
   height: calc(100vh - 70px); */
   background-color: var(--latar);
   color: var(--color-text);
-  padding: 70px 4rem;
+  /* padding: 70px 4rem; */
   /* overflow-y: auto; */
+  padding: 20px;
+  margin-top: 90px;
 }
 
 .content-header {
@@ -496,6 +508,7 @@ html, body {
 /* info forum mulai */
 .info {
   flex: 1; 
+  display: none;
   min-width: 250px;
   background: #111827;
   color: var(--color-text);
@@ -550,7 +563,11 @@ html, body {
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 
-    .gif-section {
+  /* body {
+    background-color: #ffffff;
+  } */
+
+  .gif-section {
     flex-direction: column;   
     text-align: center;       
     padding: 40px 5%;         
@@ -567,16 +584,75 @@ html, body {
   .gif-desc {
     font-size: 0.95rem;
   }
+
+  /* .content {
+    padding: 20px;              
+    font-size: 14px;
+    text-align: center;
+  } */
+
+ 
+  .community-logo {
+    width: 60px;
+    height: 60px;
+    display: block;
+  }
+
+  
+  .content h1 {
+    font-size: 25px;
+   
+  }
+
+  
+  /* .content .subtitle {
+    font-size: 12px;
+    text-align: center;
+  } */  
+
+  /* Tabs biar ke tengah */
+  /* .tabs {
+    justify-content: center;
+  }
+
+  
+  .post {
+    font-size: 13px;
+  }  */
+
+  
+  /* .main-wrapper {
+    margin: 0 auto;
+    padding: 10px;
+    justify-content: center;
+  } */
+
+  
+
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-    
+  /* body {
+    background-color: blue;
+  } */
+
+  
+
+  
+  
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    
+  
+  /* body {
+    background-color: red;
+  } */
+  
+  
+  
   .navbar {
         display: flex;
         /* position: fixed; */
@@ -641,6 +717,10 @@ html, body {
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     
+  /* body{
+    background-color: yellow;
+  } */
+
     .navbar-logo.logo-big {
         display: block;
     }
@@ -648,5 +728,33 @@ html, body {
     .navbar-logo.logo-small {
         display: none;
     }
+  
+  .info {
+    display: block;
+  }  
     
+}
+
+@media only screen and (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%); 
+    transition: transform 0.3s ease;
+    z-index: 200;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); 
+  }
+
+  .main-wrapper {
+    margin-left: 0; 
+  }
+
+}
+
+@media only screen and (min-width: 769px) {
+  .main-wrapper {
+    margin-left: 240px;   
+  }
+
 }
