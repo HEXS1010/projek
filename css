@@ -800,241 +800,211 @@ html, body {
 
 
 /* responsif */
-/* Extra small devices (phones, 600px and down) */
+/* Mobile (max 600px) */
 @media only screen and (max-width: 600px) {
-    /* body {
-        background-color: red;
-    } */
 
+  body {
+    background: #2d3e50;
+  }
+
+  /* navbar */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-group,
+  .navbar-action {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .navbar-group.navbar-expand,
+  .navbar-action.navbar-expand {
+    display: flex;
+  }
+
+  .burger {
+    display: block;
+    position: absolute;
+    right: 1.5rem;
+  }
+
+
+  /* skill */
   .skill-title {
     font-size: 1.5rem;
   }
 
-    .navbar .navbar-down {
-    display: none !important; 
-  }
 
-   .navbar-group,
-  .navbar-action {
-    flex-direction: column; 
-    gap: 1rem;
-    width: 100%;
-  }
-
-    .about-title {
+  /* about */
+  .about-title {
     font-size: 1.6rem;
 
   }
 
-    .intro-section {
-    flex-direction: column;   
-    text-align: center;       
-    padding: 40px 5%;         
-  }
-
+  
+  
+  /* intro */
+  .intro-section,
+  .intro-section.reverse {
+    flex-direction: column;  
+    text-align: center;
+    padding: 40px 5%;
+  }        
+  
   .intro-right {
     order: 1;
     margin-top: 20px;         
   }
-
-  .intro-left, .browser {
+  
+  .intro-left, .browser, .intro-section img {
     order: 2; 
   }
-
+  
+  
   .intro-section.reverse {
     flex-direction: column;
   }
   
   .browser {
     flex-direction: column;
+    width: 25rem;
   }
-
+  
   .browser-content {
     font-size: 14px;  
   }
-
+  
   .intro-title {
-    font-size: 1.5rem;        
+    font-size: 1.3rem;        
   }
-
+  
   .intro-desc {
     font-size: 0.95rem;
   }
-
-  /* fotter reponsif */
-  .footer-content {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-socials {
-    margin-top: 10px;
-  }
-
-  .footer-logo img {
-    max-width: 200px;
-  }
-}
-
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-    /* body {
-        background-color: rgba(136, 0, 255, 0.527);
-    } */
-
-    .footer-socials {
-        padding-top: 15px;
-    }
-
-    .intro-left, .browser {
-    order: 2; 
-  }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-    body {
-        background-color: yellow;
-    }
-
-    .about-title {
-    font-size: 2.0rem;
-
-  }
-
-    .navbar {
-        display: flex;
-        /* position: fixed; */
-        flex-direction: row; 
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.7rem 2rem;
-        /* width: 100%;         */
-        font-weight: 500;
-        z-index: 100;
-        border-bottom: 1px solid var(--color-text);
-    }
-
-    .navbar-item {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .navbar .navbar-down {
-        position: absolute;
-        display: none;
-        box-shadow: 5px 5px 5px var(--secondery);
-        border: 1px solid white;
-    }
-
-    .navbar-down.navbar-expand {
-        display: block;
-        animation: menuReveal 200ms linear;
-    }
-
-    .navbar-logo.logo-big {
-        display: none;
-    }
-
-    .navbar-logo.logo-small {
-        display: block;
-    }
-    
-    .burger {
-    display: none;
-  }
-
-
-    
-  .navbar-group,
-.navbar-action {
-  display: none;
-}
-.burger {
-  display: block;
-}
   
-
-
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-    body {
-        background-color: green;
-    }
-    
-    .navbar-logo.logo-big {
-        display: block;
-    }
-    
-    .navbar-logo.logo-small {
-        display: none;
-    }
-    
-}
-
-
-
-@media (min-width: 1025px) {
-  .navbar-group,
-  .navbar-action {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
+  .intro-section img, .browser {
+    width: 100%;   
+    max-width: 26rem;
+    margin-top: 20px; 
   }
-  .burger {
-    display: none;
-  }
+    
+    
+  
+  /* fotter reponsif */
+    .footer-content {
+      grid-template-columns: 1fr;
+    }
+  
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .footer-socials {
+      margin-top: 10px;
+    }
+  
+    .footer-logo img {
+      max-width: 200px;
+    }
+  
+    .footer-socials {
+      padding-top: 15px;
+    }
 }
 
-/* responsif navbar */
-@media (min-width: 768px) and (max-width: 1024px) {
+/* Tablet (601px – 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+
+  body {
+    background: #00ffea;
+  }
+
+  /* navbar */
   .navbar {
-    flex-direction: column; 
+    flex-direction: column;
     align-items: flex-start;
   }
 
   .navbar-logo {
-    margin-bottom: 1rem; 
+    
+    margin-bottom: 0;
   }
 
   .navbar-group,
-  .navbar-action {
-    display: none; 
-    flex-direction: column;
-    width: 100%; 
-    gap: 1rem;
-  }
+ .navbar-action {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
 
-  .navbar-group.navbar-expand,
-  .navbar-action.navbar-expand {
-    display: flex; 
-  }
+.navbar-group.navbar-expand,
+.navbar-action.navbar-expand {
+  display: flex;
+}
 
-  .burger {
-    display: block; 
-    position: absolute;
-    right: 1.5rem;
-  }
-
-  .navbar-action {
-    display: flex !important; 
-    flex-direction: row; 
-    gap: 1rem;
-    margin-top: 0; 
-    width: auto; 
-  }
-
+.burger {
+  display: block;
+  position: absolute;
+  right: 1.5rem;
 }
 
 
+  /* about */
+  .about-title {
+    font-size: 2.0rem;
+
+  }
+
+  /* intro */
+
+  .intro-section,
+  .intro-section.reverse {
+    flex-direction: column;  
+    text-align: center;
+    padding: 40px 5%;
+  }  
+  
+  .intro-right {
+    order: 1;
+    margin-top: 20px;
+  }
+
+  .intro-left, 
+  .browser, 
+  .intro-section img {
+    order: 2;   
+  }
+
+  .intro-title {
+    font-size: 1.6rem;
+  }
+
+  .intro-section img, .browser {
+  width: 100%;   
+  max-width: 30rem;
+  margin-top: 20px; 
+  }
+  
+  .intro-title, .intro-desc {
+  width: 100%;   
+  max-width: 45rem;
+  margin-top: 20px; 
+  }
+}
+
+/* Desktop (1025px ke atas) */
 @media (min-width: 1025px) {
+
+  
+ 
+
+  /* navbar */
   .navbar {
     flex-direction: row;
     justify-content: space-between;
@@ -1049,11 +1019,30 @@ html, body {
 
   .navbar-action {
     display: flex !important;
-    gap: 1rem;
     flex-direction: row;
+    gap: 1rem;
   }
 
+  /* .navbar-item:hover .navbar-down {
+    display: block;
+  } */
+
+  .navbar .navbar-down {
+  position: absolute;
+  display: none;
+  box-shadow: 5px 5px 5px var(--secondery);
+  border: 1px solid white; 
+  
+  
+}
+
+.navbar-down.navbar-expand {
+  display: block;
+  animation: menuReveal 200ms linear;
+}
+
+
   .burger {
-    display: none; 
+    display: none;
   }
 }
