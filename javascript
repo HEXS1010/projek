@@ -27,78 +27,131 @@ menuToggle.addEventListener("click", () => {
 });
 
 
-// like animasi
-document.querySelectorAll(".like-icon").forEach(likeIcon => {
-  const likeCount = likeIcon.querySelector(".like-count");
 
-  likeIcon.addEventListener("click", () => {
-    likeIcon.classList.toggle("liked");
 
-    let count = parseInt(likeCount.textContent);
-    if (likeIcon.classList.contains("liked")) {
-      likeCount.textContent = count + 1;
+// gambar slider
+const sliderItems = document.querySelectorAll('.slider-item');
+
+let sliderActive = 1;
+
+if (sliderItems) {
+    sliderItems.forEach((slider, index) => {
+        if (index === 0) {
+            slider.setAttribute("data-show", "show");
+        } else {
+            slider.setAttribute("data-show", "hidden");
+        }
+    })
+    
+    setInterval(() => {
+        sliderItems.forEach((slider, index) => {
+            if(sliderActive === index) {
+                slider.setAttribute("data-show", "show");
+            } else {
+                slider.setAttribute("data-show", "hidden");
+            }
+        });
+
+        if(sliderActive === sliderItems.length - 1 ) {
+            sliderActive= 0;
+        } else {
+            sliderActive++;
+        }
+
+
+    }, 5000)
+}
+
+// typing 
+const typedText = document.querySelector(".typing-text");
+const cursor = document.querySelector(".cursor");
+
+const textArray = ["let's upgrade let your skill", "Build your future with code", "Master coding, master the future", "Your coding journey starts here"];
+const typingDelay = 200;
+const clearDelay = 100;
+const newTextDelay = 2000;
+let textArrayIndex = 0;
+let charIndex = 0;
+
+function type() {
+    if(charIndex < textArray[textArrayIndex].length) {
+        if(!cursor.classList.contains("typing"))
+            cursor.classList.add("typing");
+        typedText.textContent += textArray[textArrayIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingDelay);
     } else {
-      likeCount.textContent = count - 1;
+        cursor.classList.remove("typing");
+        setTimeout(clear, newTextDelay);
+    }
+}
+
+function clear() {
+    if(charIndex > 0) {
+        if(cursor.classList.contains("typing"))
+            cursor.classList.add("typing");
+        typedText.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(clear, clearDelay);
+    } else {
+        cursor.classList.remove("typing");
+        textArrayIndex++;
+        if(textArrayIndex >= textArray.length) {
+            textArrayIndex = 0;
+        }
+        setTimeout(type, typingDelay + 1100);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", 
+    function () {
+        if(textArray.length)
+        setTimeout(type, newTextDelay + 250)
+    }
+)
+
+
+// browser animasi 
+const text = `
+<span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="val">"en"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="val">"UTF-8"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="val">"viewport"</span> <span class="attr">content</span>=<span class="val">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;title&gt;</span><span class="text">Projek saya</span><span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;h1&gt;</span><span class="text">Hello World 🌍</span><span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;p&gt;</span><span class="text">Ini adalah projek pertama saya!</span><span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+`;
+
+
+let index = 0;
+const speed = 30;
+const typingEl = document.getElementById("typing");
+typingEl.style.marginTop = "0px";
+let started = false;
+
+function typeWriter() {
+  if (index <= text.length) {
+    typingEl.innerHTML = text.substring(0, index); 
+    index++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+
+
+const browserEl = document.querySelector(".browser");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !started) {
+      started = true;
+      typeWriter();
     }
   });
-});
+}, { threshold: 0.4 });
 
-
-
-
-// sidebar
-const sidebar = document.querySelector(".sidebar");
-    const toggleBtn = document.querySelector(".sidebar-toggle-btn");
-    const toggleIcon = toggleBtn.querySelector("i");
-
-
-    toggleBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("active");
-      updateIcon();
-    });
-
-    function updateIcon() {
-      if (sidebar.classList.contains("active")) {
-        toggleIcon.classList.replace("fa-chevron-right", "fa-chevron-left");
-      } else {
-        toggleIcon.classList.replace("fa-chevron-left", "fa-chevron-right");
-      }
-    }
-
-    let startX = 0;
-    let endX = 0;
-
-    document.addEventListener("touchstart", (e) => {
-      startX = e.touches[0].clientX;
-    });
-
-    document.addEventListener("touchend", (e) => {
-      endX = e.changedTouches[0].clientX;
-      handleSwipe();
-    });
-
-    function handleSwipe() {
-      let diff = endX - startX;
-
-      // Geser kanan → buka sidebar
-      if (diff > 50) {
-        sidebar.classList.add("active");
-        updateIcon();
-      }
-      // Geser kiri → tutup sidebar
-      else if (diff < -50) {
-        sidebar.classList.remove("active");
-        updateIcon();
-      }
-    }
-
-
-const menuItems = document.querySelectorAll(".sidebar .menu-item");
-
-menuItems.forEach(item => {
-  item.addEventListener("click", () => {
-    menuItems.forEach(i => i.classList.remove("active"));
-
-    item.classList.add("active");
-  });
-});
+observer.observe(browserEl);
