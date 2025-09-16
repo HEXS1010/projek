@@ -6,7 +6,7 @@
     <title>revisi 2</title>
 
     <!-- css -->
-    <link rel="stylesheet" href="forum.css">
+    <link rel="stylesheet" href="/css/forum.css">
    
    <!-- font code -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,16 +30,11 @@
     <!-- navbar mulai -->
      <header>
         <nav class="navbar">
-          <div class="navbar-toggle">
-            <span></span>
-            <!-- &#9776; -->
-          </div>
             <img class="navbar-logo logo-big" src="/img/logo revisi 2.png" alt="logo">
-            <img class="navbar-logo logo-small" src="/img/logo versi 2.png" alt="logo">
             
             <!-- navbar group -->
             <ul class="navbar-group navbar-expanded">
-                <li class="navbar-item"><a href="">Home</a></li>
+                <li class="navbar-item"><a href="index.html">Home</a></li>
                 <li class="navbar-item"><a href="">Learn &#9662;</a>
                     <ul class="navbar-down">
                         <li class="navbar-item"><a href="">Web Dev</a></li>
@@ -63,6 +58,14 @@
                 </li> 
                 <li class="navbar-item"><a href="Forum.html">Forum</a></li>
             </ul>
+
+          <div class="burger">
+            <div class="line-1"></div>
+            <div class="line-2"></div>
+            <div class="line-3"></div>
+          </div>
+
+
             <div class="navbar-action">
                 <button>Login</button>
                 <button>Sign Up</button>
@@ -76,7 +79,7 @@
     <!-- sidebar mulai -->
 
     <nav class="sidebar">
-      <a href="index.html" class="menu-item active">
+      <a href="forum.html" class="menu-item active">
         <i class="fa-solid fa-house"></i>
         Home
       </a>
@@ -93,7 +96,7 @@
         <i class="fa-solid fa-medal"></i>
         Event Tahunan
       </a>
-      <a href="#" class="menu-item">
+      <a href="chat.html" class="menu-item">
         <i class="ri-message-2-line"></i>
         Chat
       </a>
@@ -138,6 +141,12 @@
         Meme
       </a>
     </nav>
+
+    <!-- sidebar icon -->
+<button class="sidebar-toggle-btn">
+  <i class="fa-solid fa-chevron-right"></i>
+</button>
+
     <!-- sidebar akhir -->
     
     
@@ -373,6 +382,6 @@
 
 
     <!-- javascript -->
-      <script src="forum.js"></script>
+      <script src="/js/forum.js"></script>
 </body>
 </html>
