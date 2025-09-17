@@ -145,11 +145,6 @@ html, body {
     z-index: 10;
 }
 
-/* .navbar-group,
-.navbar-action {
-  display: flex;
-} */
-
 .navbar-group,
 .navbar-action {
   display: none; 
@@ -158,15 +153,6 @@ html, body {
 .burger {
   display: block; 
 }
-
-/* .navbar .navbar-down {
-  display: none !important;
-}
-
-.navbar-down.navbar-expand {
-  display: block !important;
-  animation: menuReveal 200ms linear;
-} */
 
 .navbar-group.navbar-expand,
 .navbar-action.navbar-expand {
@@ -803,9 +789,9 @@ html, body {
 /* Mobile (max 600px) */
 @media only screen and (max-width: 600px) {
 
-  body {
+  /* body {
     background: #2d3e50;
-  }
+  } */
 
   /* navbar */
   .navbar {
@@ -920,9 +906,9 @@ html, body {
 /* Tablet (601px – 1024px) */
 @media (min-width: 601px) and (max-width: 1024px) {
 
-  body {
+  /* body {
     background: #00ffea;
-  }
+  } */
 
   /* navbar */
   .navbar {
